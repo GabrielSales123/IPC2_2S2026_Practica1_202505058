@@ -1,5 +1,7 @@
 public class Perro : Mascota
 {
+    public string raza {get; set;}
+    public string tamaño {get; set;}
     public Perro(String nombre, int peso, int edad, string sexo,
         string propietario, string codigo, bool enfermo, string raza,
         string tamaño)
@@ -14,6 +16,5 @@ public class Perro : Mascota
         this.raza = raza;
         this.tamaño = tamaño;
     }
-    public string raza {get; set;}
-    public string tamaño {get; set;}
+    
 }
