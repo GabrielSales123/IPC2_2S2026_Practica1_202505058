@@ -5,13 +5,17 @@
     public static void Main(string[] args)
     {
         Mascota? tempMascota;
-        double tempDosis; 
-        double dosis = 30.0; 
+         
+        
         ListaMascotas listaMascotas = new ListaMascotas();
-        listaMascotas.agregarMascota(new Perro("Firulais", 45, 3, "Mencho", "Juan Perez", "1", false, "Labrador", "Grande"));
-        listaMascotas.agregarMascota(new Perro("Firulais2", 50, 3, "Mencho", "Juan Perez", "2", false, "Labrador", "Grande"));
-        listaMascotas.agregarMascota(new Perro("Firulais3", 55, 3, "Mencho", "Juan Perez", "3", false, "Labrador", "Grande"));
-        listaMascotas.mostrarMascotas();
+        listaMascotas.agregarMascota(new Perro("Firulais", 45, 3, "Macho", "Juan Perez", "1", false, "Labrador", "Grande"));
+        listaMascotas.agregarMascota(new Perro("Rex", 15, 4, "Macho", "Pedro Lopez", "2", false, "Boxer", "Grande"));
+        listaMascotas.agregarMascota(new Gato("Luna", 5, 2, "Hembra", "Ana Martinez", "3", true, true, "Siames"));
+        //listaMascotas.agregarMascota(new Gato("Tom", 15, 3, "Macho", "Luis Perez", "4", false, false, "Persa"));
+        //listaMascotas.agregarMascota(new Ave("Kiwi", 2, 1, "Hembra", "Maria Gomez", "5", false, 22, true));
+        //listaMascotas.agregarMascota(new Ave("Paco", 15, 2, "Macho", "Carlos Diaz", "6", true, 28, false));
+        //listaMascotas.agregarMascota(new Tortuga("Shell", 12, 5, "Hembra", "Laura Torres", "7", false, "Duro", true));
+        //listaMascotas.agregarMascota(new Tortuga("Nemo", 15, 4, "Macho", "Daniel Vega", "8", true, "Blando", false));
 
         while (isRunning)
         {
@@ -22,7 +26,7 @@
             Console.WriteLine("2. Consultar mascota");
             Console.WriteLine("3. Cambiar estado de paciente");
             Console.WriteLine("4. Calcular dosis de medicamento");
-            Console.WriteLine("5. Mostrar información de mascota");
+            Console.WriteLine("5. Mostrar información de las mascotas");
             Console.WriteLine("6. Salir");
             Console.WriteLine("====================================");
 
@@ -30,13 +34,12 @@
             {
                 case "1":
                 //==================================================================
-                    Console.Clear();
                     //Configuraciones Generales
                     //Nombre------------------------------------------------
                     Console.WriteLine("Ingrese el nombre de la mascota: ");
                     string nombre = Console.ReadLine();
                     //Peso-------------------------------------------------
-                    Console.WriteLine("Ingrese el peso de la mascota: ");
+                    Console.WriteLine("Ingrese el peso de la mascota en Kg: ");
                     int peso = Convert.ToInt32(Console.ReadLine());
                     //Edad-------------------------------------------------
                     Console.WriteLine("Ingrese la edad de la mascota: ");
@@ -48,14 +51,13 @@
                     Console.WriteLine("Ingrese el nombre del propietario: ");
                     string propietario = Console.ReadLine();
                     //Codigo-------------------------------------------------
-                    Console.WriteLine("Ingrese el código de la mascota: ");
-                    string codigo = Console.ReadLine();
+                    string codigo = (listaMascotas.contMascotas() + 1).ToString();
                     //Estado------------------------------------------------
                     Console.WriteLine("Ingrese si la mascota está enferma (Y/N): ");
                     string inputEnfermo = Console.ReadLine();
                     bool enfermo = inputEnfermo.ToUpper() == "Y";
                     //Tipo de mascota --------------------------------------
-                    Console.WriteLine("Ingrese el tipo de mascota (Perro/Gato): ");
+                    Console.WriteLine("Ingrese el tipo de mascota (Perro/Gato/Ave/Tortuga): ");
                     string tipoMascota = Console.ReadLine();
                     //Logica -----------------------------
                     if(tipoMascota == "Perro"){
@@ -86,6 +88,7 @@
                         Console.WriteLine("Indique si el ave puede volar(Y/N): ");
                         string inputVolar = Console.ReadLine();
                         bool volar = inputVolar.ToUpper() == "Y";
+                        listaMascotas.agregarMascota(new Ave(nombre, peso, edad, sexo, propietario, codigo, enfermo, envergadura, volar));
                     }else if (tipoMascota == "Tortuga")
                     {
                         //Caparazón
@@ -94,62 +97,61 @@
                         //Acuatica
                         Console.WriteLine("Indique si la tortuga es acuatica(Y/N)");
                         string inputAcuatica = Console.ReadLine();
-                        bool isAcuatica = inputAcuatica.ToUpper() == "Y"; 
+                        bool isAcuatica = inputAcuatica.ToUpper() == "Y";
+                        listaMascotas.agregarMascota(new Tortuga(nombre, peso, edad, sexo, propietario, codigo, enfermo, caparazon, isAcuatica)); 
                     }else {
                         Console.WriteLine("Tipo de mascota no válido.");
-
                     }
-
+                    Console.WriteLine("Presione Enter para continuar...");
+                    Console.ReadLine();
+                    Console.Clear();
                     break;
                     //===================================================================
                 case "2":
-                    Console.Clear();
                     Console.WriteLine("Ingrese el código de la mascota a consultar: ");
                     listaMascotas.buscar(Console.ReadLine());
+                    Console.WriteLine("Presione Enter para continuar...");
+                    Console.ReadLine();
+                    Console.Clear();
                     break;
                 case "3":
-                    Console.Clear();
                     Console.WriteLine("Ingrese el código de la mascota a cambiar estado: ");
                     tempMascota = listaMascotas.consultarMascota(Console.ReadLine());
                     if (tempMascota != null)
                     {
-                        tempMascota.enfermo = !tempMascota.enfermo;
-                        Console.WriteLine("Estado cambiado. Enfermo: " + tempMascota.enfermo);
+                        Console.WriteLine("Mascota seleccionada: "+tempMascota.GetNombre());
+                        tempMascota.SetEnfermo(!tempMascota.GetEnfermo());
+                        Console.WriteLine("Estado cambiado. Enfermo: " + tempMascota.GetEnfermo());
                     }
                     else
                     {
                         Console.WriteLine("Mascota no encontrada.");
                     }
+                    Console.WriteLine("Presione Enter para continuar...");
+                    Console.ReadLine();
+                    Console.Clear();
                     break;
                 case "4":
                     Console.WriteLine("Ingrese el codigo de la mascota a consultar");
                     tempMascota= listaMascotas.consultarMascota(Console.ReadLine());
                     if(tempMascota != null)
                     {
-                        Console.WriteLine("Nombre de la mascota: "+ tempMascota.nombre);
-                        Console.WriteLine("Peso: "+tempMascota.peso+"Kg");
-                        if(tempMascota is Perro)
-                        {
-                            tempDosis = tempMascota.peso * dosis;
-                            Console.WriteLine("La dosis necesaria es de: "+tempDosis+"ml");
-                        }
-                        else if(tempMascota is Gato)
-                        {
-                            tempDosis = tempMascota.peso * dosis*0.90;
-                            Console.WriteLine("La dosis necesaria es de: "+tempDosis+"ml");
-                        }
-                        else if(tempMascota is Ave)
-                        {
-                            tempDosis = tempMascota.peso * dosis*0.50;
-                            Console.WriteLine("La dosis necesaria es de: "+tempDosis+"ml");
-                        }
-                        else if(tempMascota is Tortuga)
-                        {
-                            tempDosis = tempMascota.peso * dosis*0.80;
-                            Console.WriteLine("La dosis necesaria es de: "+tempDosis+"ml");
-                        }
+                        Console.WriteLine("Nombre de la mascota: "+ tempMascota.GetNombre());
+                        Console.WriteLine("Peso: "+tempMascota.GetPeso()+"Kg");
+                        Console.WriteLine("La dosis necesaria es de: "+tempMascota.CalcularDosis()+"ml");
+                        
                     }
-                    break; 
+                    Console.WriteLine("Presione Enter para continuar...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case "5":
+                    Console.Clear();
+                    listaMascotas.mostrarMascotas();
+                    Console.WriteLine("Presione Enter para continuar...");
+                    Console.ReadLine();
+                    Console.Clear();
+                break; 
                 case "6":
                     Console.Clear();        
                     isRunning = false;
