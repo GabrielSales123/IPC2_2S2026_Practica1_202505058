@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\veterinaria\\Veterinaria.csproj": {}
+    "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\Veterinaria\\Veterinaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\veterinaria\\Veterinaria.csproj": {
+    "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\Veterinaria\\Veterinaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\veterinaria\\Veterinaria.csproj",
+        "projectUniqueName": "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\Veterinaria\\Veterinaria.csproj",
         "projectName": "Veterinaria",
-        "projectPath": "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\veterinaria\\Veterinaria.csproj",
+        "projectPath": "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\Veterinaria\\Veterinaria.csproj",
         "packagesPath": "C:\\Users\\Andri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\veterinaria\\obj\\",
+        "outputPath": "C:\\Users\\Andri\\Documents\\Repositorios\\IPC2_2S2026_Practica1_202505058\\Veterinaria\\Veterinaria\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andri\\AppData\\Roaming\\NuGet\\NuGet.Config"
